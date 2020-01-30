@@ -15,23 +15,24 @@ const Hero = {
 
 
 class Layer {
-	constructor(img, layerMap, sprite) {
+	constructor(img, layerMap, sprites) {
 		this.img = img;
 		this.layerMap = layerMap;
-		this.sprite = sprite;
+		this.sprites = sprites;
 	}
 
 	draw() {
 		let posX = 0;
 		let posY = 0;
 		this.layerMap.forEach(row => {
-			row.map(exist => {
-				if(exist) {
-					 //image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight])
-					 image(this.img, posX, posY, 32, 32, this.sprite.x, this.sprite.y, 32, 32);
+			row.map(index => {
+				if(index) {
+					const sprite = this.sprites[index]
+					//image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight])
+					image(this.img, posX, posY, 32, 32, sprite.x, sprite.y, 31, 31);
 				}
 				posX += 32;
-			})
+			});
 			posX = 0;
 			posY += 32;
 		})
@@ -47,26 +48,30 @@ function preload() {
 
 
 function setup() {
-	// const {stoneWall} = DataTiles1;
-	//const {ground, groundWall} = DataTiles2;
-	const {wall, ground, noExit} = DataTiles3;
-  createCanvas(800,480); // 25x  15y
+	//const { stoneWall } = DataTiles1;
+	//const { ground, groundWall } = DataTiles2;
+	const { 
+		wall, ground, noExit, 
+		devilDoor, warriorInBlock, 
+		waterSave, closedDoor, openDoor
+	} = DataTiles3;
+  createCanvas(800,480); // 25_x  15_y
   background(51);
 
   Hero.sprite = createSprite(47, 47, 32,32);
   Hero.sprite.addImage(Hero.image);
-  // createSprite(400, 200, 32, 32);
-  // imageSprite = createSprite(64, 0);
-  // imageSprite.addImage(ground);
-  LayerGround = new Layer(TileSet3, LayerGroundMap, ground)
-  LayerGroundWalls = new Layer(TileSet3, LayerWallsMap, wall);
+
+  LayerGround = new Layer(TileSet3, LayerGroundMap, { 1: ground,})
+  LayerGroundWalls = new Layer(
+  	TileSet3, LayerWallsMap, 
+  	{1: wall, 2: noExit, 3: devilDoor, 4: warriorInBlock, 5: waterSave, 6: closedDoor, 7: openDoor }
+  );
 }
 
 function draw() {
-	noStroke();
 	LayerGround.draw();
 	LayerGroundWalls.draw();
-  //drawSprites();
+
   image(Hero.image, Hero.x, Hero.y)
 }
 
@@ -85,8 +90,19 @@ function keyPressed() {
   }
 }
 
+function mousePressed() {
+	let xPos = floor(mouseX / 32);
+	let yPos = floor(mouseY / 32);
+	let block = LayerWallsMap[yPos][xPos]
+	console.log(`x: ${xPos}, y: ${yPos}, block: ${block}`);
+	if (block === 6) {
+		alert('Door is closed! Find a key!');
+		//LayerWallsMap[yPos][xPos] = 7;
+	}
+}
+
 function checkColliding(x, y) {
-	if(!LayerWallsMap[y][x]) {
+	if(!LayerWallsMap[y][x] || LayerWallsMap[y][x] == 7) {
 		return true;
 	}
 	return false;
