@@ -4,7 +4,7 @@ const DataTiles1 = {
 const DataTiles2 = {
 }
 
-const DataTiles3 = {
+const MetaTiles3 = {
 	wall: {
 		x: 545, y: 33
 	},
