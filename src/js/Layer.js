@@ -1,5 +1,3 @@
-import Player from "./Player";
-
 class Layer {
   constructor(img, layerMap, sprites) {
     this.img = img;
