@@ -17,9 +17,9 @@ class Grid {
           this.data[y].push({x,y, fill: 55, type: 'wall'})
         }
         else if(x === this.xTotal-1 && y < this.yTotal || y === this.yTotal-1 && x < this.xTotal) {
-          this.data[y].push({x,y, fill: 55, type: 'ground'})
+          this.data[y].push({x,y, fill: 55, type: 'wall'})
         } else {
-          this.data[y].push({x,y, fill: 32, type: null})
+          this.data[y].push({x,y, fill: 32, type: 'ground'})
         }
       }
     }
@@ -39,7 +39,7 @@ class Grid {
               scale, scale, // size in px
               wall.x, wall.y, 31, 31 // pos & size in tileset
             )
-          } else if(g.type === 'ground') {
+          } else if(b.type === 'ground') {
             // this.g.fill(b.fill);
             // this.g.rect(b.x * scale, b.y * scale, scale, scale);
             this.g.image(
