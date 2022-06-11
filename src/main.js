@@ -1,56 +1,49 @@
 import * as P5 from 'p5';
 import Player from './js/player';
 import Grid from "./js/grid";
-import  { w, h, scale, xTotal, yTotal } from './js/consts';
+import {w, h, scale, xTotal, yTotal, FPS} from './js/consts';
 import { MetaTiles3 } from './js/metaTiles';
 // ASSETS
 import heroImage from './assets/hero.png';
 import tileset3 from './assets/tileset3.png';
 
-let player = null;
-let playerImg = null;
-let grid = null;
-let tileset3Img = null;
-
 function preload(g) {
-	playerImg = g.loadImage(heroImage)
-	tileset3Img = g.loadImage(tileset3)
+	g.playerImg = g.loadImage(heroImage)
+	g.tileset3Img = g.loadImage(tileset3)
 }
 
-function setup(game) {
-	game.createCanvas(w,h);
-	player = new Player(1,1, scale, playerImg, game);
-	grid = new Grid(yTotal, xTotal, game).create();
-	game.pixelDensity(3.0);
-	game.frameRate(30);
-
+function setup(g) {
+	g.createCanvas(w,h);
+	g.player = new Player(1,1, scale, g.playerImg, g);
+	g.grid = new Grid(yTotal, xTotal, g).create();
+	g.pixelDensity(3.0);
+	g.frameRate(FPS);
 }
 
 function draw(g) {
 	g.background(5);
-	grid.show();
-	player.show();
+	g.grid.show();
+	g.player.show();
 	// player.update();
 }
 
 function keyPressed(g) {
-	player.move(g.keyCode, grid.isCollidingWall);
+	g.player.move(g.keyCode, g.grid.isCollidingWall);
 }
 
 function mousePressed(g) {
 	// TODO: rewrite that's part
-	const xPos = g.floor(g.mouseX / scale);
-	const yPos = g.floor(g.mouseY / scale);
-	if(xPos >= 0 && xPos < w / scale &&  yPos >= 0 && yPos < h / scale ) {
-		//  closedDoor => 6
-		if (LayerWallsMap[yPos][xPos] === 6) {
-			alert('Door is closed! Find a key!');
-			//LayerWallsMap[yPos][xPos] = 7;
-		}
-	}
+	const x = g.floor(g.mouseX / scale);
+	const y = g.floor(g.mouseY / scale);
+	console.log({x, y})
 }
 
 new P5((game) => {
+	game.player = null;
+	game.playerImg = null;
+	game.grid = null;
+	game.tileset3Img = null;
+
 	game.preload = () => preload(game);
 	game.setup = () => setup(game);
 	game.draw = () => draw(game);
