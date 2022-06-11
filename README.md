@@ -3,7 +3,7 @@
 <p>It will be rewrite soon</p>
 
 #### How start:
-1. `sudo npm -g i http-server`
-2. `http-server ./public`
-3. <http://localhost:8080/>
+1. `yarn install`
+2. `npm serve`
+3. <http://localhost:9000/>
 

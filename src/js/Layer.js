@@ -1,3 +1,5 @@
+import Player from "./Player";
+
 class Layer {
   constructor(img, layerMap, sprites) {
     this.img = img;
@@ -13,7 +15,7 @@ class Layer {
         if(index) {
           const sprite = this.sprites[index]
           //image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight])
-          image(this.img, posX, posY, 32, 32, sprite.x, sprite.y, 31, 31);
+          image(this.img, 0, 0, 32, 32, sprite.x, sprite.y, 31, 31);
         }
         posX += 32;
       });
@@ -22,3 +24,5 @@ class Layer {
     })
   }
 }
+
+export default Layer;
