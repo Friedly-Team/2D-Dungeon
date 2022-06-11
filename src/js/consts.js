@@ -4,3 +4,5 @@ export const yTotal = 24;
 
 export const w  = scale  *  xTotal;
 export const h  = scale  *  yTotal;
+
+export const FPS = 30;
