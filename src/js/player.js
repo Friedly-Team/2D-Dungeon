@@ -41,30 +41,30 @@ class Player {
     );
   }
 
-  move(keyCode, checkColliding) {
+  move(keyCode, collidingWall) {
     const {x, y} = this.pos;
     switch (keyCode) {
       case this.keys.a:
       case this.keys.left:
-        if (checkColliding(x - this.step, y)) {
+        if (!collidingWall(x - this.step, y)) {
           this.pos.add(-1, 0)
         }
         break;
       case this.keys.d:
       case this.keys.right:
-        if (checkColliding(x + this.step, y)) {
+        if (!collidingWall(x + this.step, y)) {
           this.pos.add(1, 0)
         }
         break;
       case this.keys.w:
       case this.keys.up:
-        if (checkColliding(x, y - this.step)) {
+        if (!collidingWall(x, y - this.step)) {
           this.pos.add(0, -1)
         }
         break;
       case this.keys.s:
       case this.keys.down:
-        if (checkColliding(x, y + this.step)) {
+        if (!collidingWall(x, y + this.step)) {
           this.pos.add(0, 1);
         }
         break;

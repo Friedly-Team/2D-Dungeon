@@ -1,4 +1,4 @@
-import {scale, xTotal, yTotal} from "./consts";
+import { scale } from "./consts";
 
 class Grid {
   constructor(yTotal, xTotal, game) {
@@ -36,7 +36,7 @@ class Grid {
     )
   }
 
-  isCollidingWall(x, y) {
+  isCollidingWall = (x, y) => {
     return this.data[y][x].type === 'wall';
   }
 

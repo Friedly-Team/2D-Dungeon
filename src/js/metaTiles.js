@@ -1,10 +1,10 @@
-const DataTiles1 = {
+export const DataTiles1 = {
 }
 
-const DataTiles2 = {
+export const DataTiles2 = {
 }
 
-const MetaTiles3 = {
+export const MetaTiles3 = {
 	wall: {
 		x: 545, y: 33
 	},
@@ -33,7 +33,7 @@ const MetaTiles3 = {
 
 
 
-const LayerGroundMap = [
+export const LayerGroundMap = [
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
 	[0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
@@ -51,7 +51,7 @@ const LayerGroundMap = [
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 ];
 
-const LayerWallsMap = [
+export const LayerWallsMap = [
 	[1,4,2,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,3,4],
 	[1,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1],
 	[1,0,1,1,6,1,0,0,0,0,0,1,0,1,0,1,1,6,1,1,0,1,0,0,1],
