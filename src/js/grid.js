@@ -17,7 +17,7 @@ class Grid {
           this.data[y].push({x,y, fill: 55, type: 'wall'})
         }
         else if(x === this.xTotal-1 && y < this.yTotal || y === this.yTotal-1 && x < this.xTotal) {
-          this.data[y].push({x,y, fill: 55, type: 'wall'})
+          this.data[y].push({x,y, fill: 55, type: 'ground'})
         } else {
           this.data[y].push({x,y, fill: 32, type: null})
         }
@@ -27,6 +27,7 @@ class Grid {
   }
   show() {
     const wall = this.g.metaTiles.wall;
+    const ground = this.g.metaTiles.ground;
     this.data.forEach(
       row => row.forEach(
         (b) => {
@@ -38,9 +39,15 @@ class Grid {
               scale, scale, // size in px
               wall.x, wall.y, 31, 31 // pos & size in tileset
             )
-          } else {
-            this.g.fill(b.fill);
-            this.g.rect(b.x * scale, b.y * scale, scale, scale);
+          } else if(g.type === 'ground') {
+            // this.g.fill(b.fill);
+            // this.g.rect(b.x * scale, b.y * scale, scale, scale);
+            this.g.image(
+              this.g.tileset,
+              b.x * scale, b.y * scale, // pos on grid in px
+              scale, scale, // size in px
+              ground.x, ground.y, 31, 31 // pos & size in tileset
+            )
           }
 
         }
