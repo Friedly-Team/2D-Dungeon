@@ -1,17 +1,20 @@
 import * as P5 from 'p5';
 import Player from './js/player';
 import Grid from "./js/grid";
-// import Layer from './js/Layer.js';
 import  { w, h, scale, xTotal, yTotal } from './js/consts';
+import { MetaTiles3 } from './js/metaTiles';
 // ASSETS
 import heroImage from './assets/hero.png';
+import tileset3 from './assets/tileset3.png';
 
 let player = null;
 let playerImg = null;
 let grid = null;
+let tileset3Img = null;
 
 function preload(g) {
 	playerImg = g.loadImage(heroImage)
+	tileset3Img = g.loadImage(tileset3)
 }
 
 function setup(game) {
