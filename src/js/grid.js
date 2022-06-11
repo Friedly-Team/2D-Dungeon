@@ -26,11 +26,23 @@ class Grid {
     return this;
   }
   show() {
+    const wall = this.g.metaTiles.wall;
     this.data.forEach(
       row => row.forEach(
         (b) => {
-          this.g.fill(b.fill);
-          this.g.rect(b.x * scale, b.y * scale, scale, scale);
+          if(b.type === 'wall') {
+            // JUST FOR TEST
+            this.g.image(
+              this.g.tileset,
+              b.x * scale, b.y * scale, // pos on grid in px
+              scale, scale, // size in px
+              wall.x, wall.y, 31, 31 // pos & size in tileset
+            )
+          } else {
+            this.g.fill(b.fill);
+            this.g.rect(b.x * scale, b.y * scale, scale, scale);
+          }
+
         }
       )
     )

@@ -1,10 +1,4 @@
-export const DataTiles1 = {
-}
-
-export const DataTiles2 = {
-}
-
-export const MetaTiles3 = {
+export const MetaTiles = {
 	wall: {
 		x: 545, y: 33
 	},

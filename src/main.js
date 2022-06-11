@@ -2,22 +2,25 @@ import * as P5 from 'p5';
 import Player from './js/player';
 import Grid from "./js/grid";
 import {w, h, scale, xTotal, yTotal, FPS} from './js/consts';
-import { MetaTiles3 } from './js/metaTiles';
+import { MetaTiles } from './js/metaTiles';
 // ASSETS
 import heroImage from './assets/hero.png';
-import tileset3 from './assets/tileset3.png';
+import tileset from './assets/tileset3.png';
 
 function preload(g) {
 	g.playerImg = g.loadImage(heroImage)
-	g.tileset3Img = g.loadImage(tileset3)
+	g.tileset = g.loadImage(tileset)
 }
 
 function setup(g) {
 	g.createCanvas(w,h);
-	g.player = new Player(1,1, scale, g.playerImg, g);
-	g.grid = new Grid(yTotal, xTotal, g).create();
 	g.pixelDensity(3.0);
 	g.frameRate(FPS);
+
+	g.metaTiles = MetaTiles;
+
+	g.player = new Player(1,1, scale, g.playerImg, g);
+	g.grid = new Grid(yTotal, xTotal, g).create();
 }
 
 function draw(g) {
@@ -39,10 +42,11 @@ function mousePressed(g) {
 }
 
 new P5((game) => {
-	game.player = null;
+	game.player 	 = null;
 	game.playerImg = null;
-	game.grid = null;
-	game.tileset3Img = null;
+	game.grid 		 = null;
+	game.tileset  = null;
+	game.metaTiles = null
 
 	game.preload = () => preload(game);
 	game.setup = () => setup(game);
