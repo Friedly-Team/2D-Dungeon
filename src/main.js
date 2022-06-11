@@ -1,7 +1,7 @@
 import * as P5 from 'p5';
 import Player from './js/player';
 import Grid from "./js/grid";
-import {w, h, scale, xTotal, yTotal, FPS} from './js/consts';
+import { w, h, scale, xTotal, yTotal, FPS } from './js/consts';
 import { MetaTiles } from './js/metaTiles';
 // ASSETS
 import heroImage from './assets/hero.png';
@@ -14,6 +14,7 @@ function preload(g) {
 
 function setup(g) {
 	g.createCanvas(w,h);
+
 	g.pixelDensity(3.0);
 	g.frameRate(FPS);
 
