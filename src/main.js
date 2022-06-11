@@ -8,8 +8,8 @@ import heroImage from './assets/hero.png';
 import tileset from './assets/tileset3.png';
 
 function preload(g) {
-	g.playerImg = g.loadImage(heroImage)
-	g.tileset = g.loadImage(tileset)
+	g.playerImg = g.loadImage(heroImage);
+	g.tileset = g.loadImage(tileset);
 }
 
 function setup(g) {

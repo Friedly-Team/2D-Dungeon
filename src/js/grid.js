@@ -26,39 +26,27 @@ class Grid {
     return this;
   }
   show() {
-    const wall = this.g.metaTiles.wall;
-    const ground = this.g.metaTiles.ground;
     this.data.forEach(
       row => row.forEach(
-        (b) => {
-          if(b.type === 'wall') {
-            // JUST FOR TEST
-            this.g.image(
-              this.g.tileset,
-              b.x * scale, b.y * scale, // pos on grid in px
-              scale, scale, // size in px
-              wall.x, wall.y, 31, 31 // pos & size in tileset
-            )
-          } else if(b.type === 'ground') {
-            // this.g.fill(b.fill);
-            // this.g.rect(b.x * scale, b.y * scale, scale, scale);
-            this.g.image(
-              this.g.tileset,
-              b.x * scale, b.y * scale, // pos on grid in px
-              scale, scale, // size in px
-              ground.x, ground.y, 31, 31 // pos & size in tileset
-            )
-          }
-
-        }
+        b => this.#drawTile(b, this.g.metaTiles[b.type])
       )
+    )
+  }
+
+  #drawTile(block, sprite) {
+    // this.g.fill(block.fill);
+    // this.g.rect(block.x * scale, block.y * scale, scale, scale);
+    this.g.image(
+      this.g.tileset,
+      block.x * scale, block.y * scale, // pos on grid in px
+      scale, scale, // size in px
+      sprite.x, sprite.y, 31, 31 // pos & size in tileset
     )
   }
 
   isCollidingWall = (x, y) => {
     return this.data[y][x].type === 'wall';
   }
-
 }
 
 export default Grid;
