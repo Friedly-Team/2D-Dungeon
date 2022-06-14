@@ -14,6 +14,10 @@ module.exports = {
     compress: true,
     port: 9000,
   },
+  resolve: {
+    modules: ['src', 'node_modules'],
+    extensions: ['*', '.js']
+  },
   module: {
     rules: [
       {
