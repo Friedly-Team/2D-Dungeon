@@ -8,7 +8,7 @@ import { FPS, h, scale, w, xTotal, yTotal } from "../consts.js";
 import heroImage from "../../assets/hero.png";
 import tileset from "../../assets/tileset3.png";
 
-function GameObject(g) {
+function GameScreen(g) {
   g.player = null;
   g.playerImg = null;
   g.grid = null;
@@ -52,4 +52,4 @@ function GameObject(g) {
   };
 }
 
-export default GameObject;
+export default GameScreen;

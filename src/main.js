@@ -1,7 +1,7 @@
 import P5 from "p5";
 import UI from "./ui/withDOM.js";
 
-import GameObject from "./js/game/index.js";
+import GameScreen from "./js/game/index.js";
 import { EditorDefaultSettings, MODES} from "./js/consts.js";
 
 let p5Canvas = null;
@@ -11,12 +11,14 @@ const ui = new UI();
 
 const currentMode = ui.subscribe("mode", { ...MODES.game });
 
+currentMode.name = 'editor'
+
 ui
   // header buttons
   .trigger("dungeon", 'onclick',() => {
     if (currentMode.name !== "game" && MODES.game.active) {
       currentMode.name = MODES.game.name;
-      p5Canvas = new P5(GameObject);
+      p5Canvas = new P5(GameScreen);
     }
   })
   .trigger("editor", 'onclick',() => {
@@ -46,10 +48,11 @@ ui
     editorSettings = {};
   })
   .trigger('createScreen', 'onclick', () => {
-    // set whole values from modal inputs
-    ui.withInputs(['sWidth', 'sHeight', 'xTotal', 'yTotal', 'bSize'], editorSettings);
+    // get values from each input by id & set in settings object
+    const ids = Object.keys(EditorDefaultSettings);
+    ui.withInputs(ids, editorSettings);
     console.log(editorSettings);
   })
 
 
-p5Canvas = new P5(GameObject);
+p5Canvas = currentMode.name === 'game' ? new P5(GameScreen) : null;
