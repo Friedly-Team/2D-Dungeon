@@ -1,4 +1,4 @@
-import * as P5 from 'p5';
+import P5 from 'p5';
 import Player from './js/player';
 import Grid from "./js/grid";
 import { w, h, scale, xTotal, yTotal, FPS } from './js/consts';
