@@ -44,7 +44,7 @@ function GameObject(g) {
     g.player.move(g.keyCode, g.grid.isCollidingWall);
   }
 
-  g.mousePressed = function (g) {
+  g.mousePressed = function () {
     // TODO: rewrite that's part
     const xIndex = g.floor(g.mouseX / scale);
     const yIndex = g.floor(g.mouseY / scale);

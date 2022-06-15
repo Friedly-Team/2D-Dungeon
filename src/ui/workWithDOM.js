@@ -5,4 +5,17 @@ function onClick(id, handler) {
   el.onclick = handler;
 }
 
-export default { onClick }
+function subscribe(id, obj) {
+  const el = doc.getElementById(id)
+  return new Proxy(obj, {
+    set: (object, prop, val) => {
+      object[prop] = val;
+      if(prop === 'name') {
+        el.innerText = val.toUpperCase();
+      }
+      return true;
+    }
+  });
+}
+
+export default { onClick, subscribe }

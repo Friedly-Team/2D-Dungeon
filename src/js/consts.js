@@ -1,3 +1,14 @@
+export const MODES = {
+  'game': {
+    name:  'game',
+    active: true,
+  },
+  'editor': {
+    name:  'editor',
+    active: true,
+  }
+}
+
 export const scale = 32;
 export const xTotal = 32;
 export const yTotal = 21;
