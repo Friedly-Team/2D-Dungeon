@@ -8,7 +8,7 @@
 2. `npm serve`  run public folder with build
 3. [localhost:9000](http://localhost:9000)
 
-### TODO LIST:
+## TODO LIST:
 
 1. [ ] add Editor for creating levels
 2. [ ] save/load levels by <code>JSON</code>
