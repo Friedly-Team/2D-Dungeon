@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "webpack serve",
     "build": "webpack",
-    "pritter": "./node_modules/.bin/prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "pritter": "./node_modules/.bin/prettier --write 'src/**/*.{js,jsx,ts,tsx,json,html,css,scss,md}'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

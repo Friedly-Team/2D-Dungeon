@@ -13,13 +13,97 @@
     <div class="navbar navbar-nav d-flex flex-row justify-content-center text-white">
       <button class="btn btn-dark me-4" id="dungeon">Dungeon</button>
       <button class="btn btn-secondary bg-transparent me-4 opacity-50" id="mode" disabled>GAME</button>
-      <button class="btn btn-dark text-warning me-4" id="editor">Editor</button>
+      <button class="btn btn-dark text-warning me-4" id="editor" data-bs-toggle="modal" data-bs-target="#createCanvas">Editor</button>
     </div>
   </header>
   <div class="container pt-5" id="app"></div>
-  <script src="./main.js"></script>
+  <div class="modal fade" id="createCanvas" tabindex="-1" aria-labelledby="createCanvasLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create Level Screen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text">width:</span>
+            <input
+                id="sWidth"
+                class="form-control text-center"
+                type="number"
+                value="512" min="0" max="1600"
+                placeholder="screen-width"
+                aria-label="screen-width"
+                aria-describedby="screen-width"
+            />
+            <span class="input-group-text">height:</span>
+            <input
+                id="sHeight"
+                class="form-control text-center"
+                type="number"
+                value="512" min="0" max="1600"
+                placeholder="screen-height"
+                aria-label="screen-height"
+                aria-describedby="screen-height"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">tiles x:</span>
+            <input
+                id="xTotal"
+                class="form-control text-center"
+                type="number"
+                value="32" min="0" max="100"
+                placeholder="x-total"
+                aria-label="x-total"
+                aria-describedby="x-total"
+            />
+            <span class="input-group-text">tiles y:</span>
+            <input
+                id="yTotal"
+                class="form-control text-center"
+                type="number"
+                value="32" min="0" max="100"
+                placeholder="y-total"
+                aria-label="y-total"
+                aria-describedby="y-total"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">tile px:</span>
+            <input
+                id="bSize"
+                class="form-control text-center"
+                type="number"
+                value="16" min="8" max="98"
+                placeholder="block-size"
+                aria-label="block-size"
+                aria-describedby="block-size"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input
+              id="closeModal"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              value="close"
+          />
+          <input
+              id="createScreen"
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              value="create"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
   <footer class="w-100 container-flued d-flex position-fixed bottom-0 p-3 justify-content-center bg-black">
     <label>created by: <a class="text-secondary text-decoration-none font-monospace" href="https://github.com/kostDev">kostDev</a></label>
   </footer>
+  <script src="./main.js"></script>
 </body>
 </html>
