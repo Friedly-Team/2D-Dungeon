@@ -13,7 +13,7 @@ function preload(g) {
 }
 
 function setup(g) {
-	g.createCanvas(w,h);
+	g.createCanvas(w,h).parent('app')
 
 	g.pixelDensity(3.0);
 	g.frameRate(FPS);

@@ -1,4 +1,3 @@
-
 class Player {
   constructor(x, y, scale, image, game) {
     this.g = game;
@@ -7,14 +6,14 @@ class Player {
     this.step = 1;
     this.scale = scale;
     this.keys = {
-      d: 68, // KEY_D,
-      w: 87, // KEY_W,
-      a: 65, // KEY_W,
-      s: 83, // KEY_W,
-      left: 37, // LEFT_ARROW
-      up: 38, // UP_ARROW
+      d:     68, // KEY_D,
+      w:     87, // KEY_W,
+      a:     65, // KEY_W,
+      s:     83, // KEY_W,
+      left:  37, // LEFT_ARROW
+      up:    38, // UP_ARROW
       right: 39, // RIGHT_ARROW
-      down: 40, // DOWN_ARROW
+      down:  40, // DOWN_ARROW
     }
   }
 
@@ -26,7 +25,8 @@ class Player {
   update() {}
 
   show() {
-    this.g.fill('silver');
+    // this.g.fill('silver');
+    this.g.noFill();
     this.g.rect(
       this.pos.x * this.scale,
       this.pos.y * this.scale,
