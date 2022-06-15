@@ -1,7 +1,7 @@
 const doc = document;
 
 function UI() {
-  this.trigger = (id, event, handler) => {
+  this.withEvent = (id, event, handler) => {
     const el = doc.getElementById(id);
     el[event] = handler;
     return this;
@@ -20,7 +20,7 @@ function UI() {
     });
   }
 
-  this.withInputs = (ids = [], linkObject, parse = Number) => {
+  this.fromInputsToObject = (ids = [], linkObject, parse = Number) => {
     if(ids.length > 0) {
       ids.forEach(id => {
         linkObject[id] = parse(doc.getElementById(id).value);
@@ -28,9 +28,10 @@ function UI() {
     }
   }
 
-  this.trackInputValue = (field, target, linkObject) => {
-    linkObject[field] = target.value;
-    // console.log(linkObject);
+  this.wrapWith = (field, linkObject) => {
+    return ({ target }) => {
+      linkObject[field] = target.value;
+    }
   }
 
   return this;
