@@ -1,33 +1,45 @@
-const path = require('path');
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(import.meta.url)) + '/public';
+
+
+export default {
   mode: 'development',
   entry: './src/main.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'public'),
-  },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    compress: true,
-    port: 9000,
-  },
-  resolve: {
-    modules: ['src', 'node_modules'],
-    extensions: ['*', '.js']
-  },
   module: {
     rules: [
       {
+        test: /\.(js|mjs|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: "babel-loader",
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        loader: 'file-loader',
+        options: {
+          outputPath: 'assets',
+        },
       },
     ],
+  },
+  resolve: {
+    modules: ['src', 'node_modules'],
+    extensions: ['*', '.js', '...'],
+    fullySpecified: false
+  },
+  output: {
+    filename: 'main.js',
+    path: __dirname,
+  },
+  devServer: {
+    static: {
+      directory: __dirname,
+    },
+    compress: true,
+    port: 9000,
   },
 };

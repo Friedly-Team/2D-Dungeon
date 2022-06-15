@@ -3,12 +3,24 @@ html, body {
 }
 
 body {
-	background: #333333;
-  margin: 0;
+	background: #1b1b1b;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
+
+/*#tools {*/
+/*  background: #545454;*/
+/*  display: flex;*/
+/*  flex-flow: row;*/
+/*  align-items: center;*/
+/*  justify-content: end;*/
+/*  padding: 0.5rem 0.75rem;*/
+/*  width: 50%;*/
+/*  min-height: 32px;*/
+/*}*/
 
 canvas {
 	border: 1px solid;
