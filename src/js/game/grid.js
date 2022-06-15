@@ -1,4 +1,4 @@
-import { scale } from "./consts";
+import { scale } from "../consts.js";
 
 class Grid {
   constructor(yTotal, xTotal, game) {
