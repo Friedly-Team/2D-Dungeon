@@ -35,6 +35,7 @@
                 placeholder="screen-width"
                 aria-label="screen-width"
                 aria-describedby="screen-width"
+                disabled
             />
             <span class="input-group-text">height:</span>
             <input
@@ -45,6 +46,7 @@
                 placeholder="screen-height"
                 aria-label="screen-height"
                 aria-describedby="screen-height"
+                disabled
             />
           </div>
           <div class="input-group mb-3">
@@ -53,7 +55,7 @@
                 id="xTotal"
                 class="form-control text-center"
                 type="number"
-                value="32" min="0" max="100"
+                value="32" min="8" max="99"
                 placeholder="x-total"
                 aria-label="x-total"
                 aria-describedby="x-total"
@@ -63,7 +65,7 @@
                 id="yTotal"
                 class="form-control text-center"
                 type="number"
-                value="32" min="0" max="100"
+                value="32" min="8" max="99"
                 placeholder="y-total"
                 aria-label="y-total"
                 aria-describedby="y-total"
@@ -80,6 +82,14 @@
                 aria-label="block-size"
                 aria-describedby="block-size"
             />
+          </div>
+          <div class="input-group d-flex justify-content-center mb-3 border-top border-1 pt-4">
+            <div class="position-relative" id="preCanvasLook">
+              <span class="position-absolute top-0 mt-0 ms-3 text-danger">→</span>
+              <span class="position-absolute top-0 mt-3 p-1 text-success">↓</span>
+              <span class="position-absolute end-0 p-1 text-info">width</span>
+              <span class="position-absolute bottom-0 p-1 text-warning">height</span>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

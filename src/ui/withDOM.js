@@ -1,14 +1,16 @@
 const doc = document;
 
 function UI() {
-  this.withEvent = (id, event, handler) => {
+  this.setEvent = (id, event, handler) => {
     const el = doc.getElementById(id);
+
     el[event] = handler;
     return this;
   }
 
   this.subscribe = (id, obj) => {
     const el = doc.getElementById(id);
+
     return new Proxy(obj, {
       set: (object, prop, val) => {
         object[prop] = val;
@@ -20,17 +22,13 @@ function UI() {
     });
   }
 
+  this.getElement = (id) => doc.getElementById(id);
+
   this.fromInputsToObject = (ids = [], linkObject, parse = Number) => {
     if(ids.length > 0) {
       ids.forEach(id => {
         linkObject[id] = parse(doc.getElementById(id).value);
       })
-    }
-  }
-
-  this.wrapWith = (field, linkObject) => {
-    return ({ target }) => {
-      linkObject[field] = target.value;
     }
   }
 
